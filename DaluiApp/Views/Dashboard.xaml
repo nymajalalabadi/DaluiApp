@@ -72,6 +72,43 @@
             </CollectionView.ItemTemplate>
 
         </CollectionView>
+
+        <cards:CoverFlowView Grid.Row="3" Margin="-25,0,25,0" ItemsSource="{Binding GeneratedImages}" PositionShiftValue="125">
+            
+            <x:Arguments>
+                <proc:CoverFlowProcessor OpacityFactor="0.25" ScaleFactor="0.75"/>
+            </x:Arguments>
+
+            <cards:CoverFlowView.ItemTemplate>
+
+                <DataTemplate>
+
+                    <Border StrokeShape="RoundedRectangle 25,25,25,25" StrokeThickness="0">
+
+                        <Grid RowDefinitions="0.7*, 0.3*">
+
+                            <Image Grid.Row="0" Grid.RowSpan="2" Source="{Binding ImagePath}" Aspect="AspectFill" />
+                            
+                            <Grid Grid.Row="1">
+                                
+                                <Rectangle Fill="Black" Opacity=".5" StrokeThickness="0"/>
+                                
+                                <VerticalStackLayout Margin="10,0,0,0" VerticalOptions="Center">
+                                    <Label FontFamily="NexaHeavy" Text="{Binding MainKeyword}" TextColor="White" FontSize="25"/>
+                                    <Label FontFamily="NexaLight" Text="{Binding Keywords}" TextColor="#ACB1BB" FontSize="15"/>
+                                </VerticalStackLayout>
+                                
+                            </Grid>
+                            
+                        </Grid>
+
+                    </Border>
+
+                </DataTemplate>
+                
+            </cards:CoverFlowView.ItemTemplate>
+
+        </cards:CoverFlowView>
         
     </Grid>
 
