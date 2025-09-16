@@ -1,4 +1,5 @@
 using DaluiApp.Models;
+using Microsoft.Maui.Platform;
 
 namespace DaluiApp.Views;
 
@@ -9,6 +10,19 @@ public partial class GenerationOptionsView : ContentPage
 		InitializeComponent();
         FillOptions();
         BindingContext = this;
+
+        Microsoft.Maui.Handlers.EditorHandler.Mapper.AppendToMapping("MyCustomization", (handler, view) =>
+        {
+            #if ANDROID
+
+               handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(ColorExtensions.ToPlatform(Colors.Transparent));
+
+            #elif IOS || MACCATALYST
+         
+            #elif WINDOWS
+
+            #endif
+        });
 
     }
 
