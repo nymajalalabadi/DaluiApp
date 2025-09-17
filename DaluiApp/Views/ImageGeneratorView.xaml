@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DaluiApp.Views.ImageGeneratorView"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             Title="ImageGeneratorView"
+             BackgroundColor="#101216">
+
+    <Grid Margin="25,25,0,0" RowDefinitions=".2*,.6*,.2*">
+
+        <VerticalStackLayout Grid.Row="1" VerticalOptions="Center" >
+            
+            <Label Text="Picture&#10;Generated" FontFamily="NexaHeavy" FontSize="30" TextColor="White" />
+
+            <HorizontalStackLayout Margin="0,10,0,0">
+
+                <Label Text="Time spent " FontFamily="NexaHeavy" FontSize="20" TextColor="#ACB1BB"  VerticalOptions="Center"/>
+
+                <Grid>
+
+                    <Border x:Name="borderTime" Grid.Row="1"
+                            BackgroundColor="#E8FF8E"  
+                            Opacity="0" Scale="1.1" IsVisible="True"
+                            StrokeShape="RoundRectangle 5,5,5,5" StrokeThickness="0" />
+
+                    <Label  FontSize="20" Text="0"
+                            FontFamily="NexaHeavy" TextColor="#ACB1BB"
+                            VerticalOptions="Center"/>
+
+                </Grid>
+
+                <Label Text=" Seconds" FontFamily="NexaHeavy" FontSize="20" TextColor="#ACB1BB"  VerticalOptions="Center"/>
+
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+
+        <Border x:Name="imageBorder" Grid.Row="1" 
+                IsVisible="False" 
+                StrokeShape="RoundRectangle 20,20,20,20" 
+                StrokeThickness="0">
+            
+            <Image Source="cartoon.jpg" Aspect="AspectFill" />
+            
+        </Border>
+        
+        <Border x:Name="imageAnimation"
+                Grid.Row="1"
+                BackgroundColor="#E8FF8E"
+                IsVisible="True"
+                Opacity=".9"
+                StrokeShape="RoundRectangle 20,20,20,20"
+                StrokeThickness="0" />
+
+        <skia:SKLottieView x:Name="lottie" Grid.Row="1" 
+                           IsAnimationEnabled="true" RepeatCount="-1" 
+                           Source="Robot.json" />
+
+        <Button  x:Name="btnFinish"
+                 Clicked="btnFinish_Clicked"
+                 Grid.Row="2" Text="Finish" FontSize="25" 
+                 TextColor="#101216" BackgroundColor="#E8FF8E"
+                 HeightRequest="75" WidthRequest="250"
+                 Scale="0.1" CornerRadius="35"
+                 HorizontalOptions="Center" VerticalOptions="Center"/>
+
+    </Grid>
+    
+</ContentPage>
